@@ -1,15 +1,15 @@
 // src/components/AboutUs.jsx
-
-import './AboutUs.css'; // Certifique-se de adicionar estilos apropriados
+import React from 'react';
+import './AboutUs.css';
 import aboutUsImage from '../assets/quen-somos.jpeg';
 
 const AboutUs = () => {
   return (
     <section id="about-us" className="about-us">
       <div className="about-us-container">
-        <div className="about-us-image-container">
+        <figure className="about-us-image-container">
           <img src={aboutUsImage} alt="Sobre Nós" className="about-us-image" />
-        </div>
+        </figure>
         <div className="about-us-text">
           <h2>Sobre Nós</h2>
           <p>

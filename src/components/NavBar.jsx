@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import './NavBar.css';
-import logo from '../assets/logo.png'; // Certifique-se de que o caminho está correto
+import logo from '../assets/logo.png'; // Verifique se o caminho está correto
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,33 +32,30 @@ const NavBar = () => {
   };
 
   return (
-    <div>
-      <header className='header'>
-        <Link to="/" className='logo'>
-          <img src={logo} alt="Logo" className="logo-image" />
-        </Link>
-        <div className="menu-icon" onClick={toggleMenu}>
-          {isMenuOpen ? <FaTimes /> : <FaBars />}
-        </div>
-        <nav className={`navbar ${isMenuOpen ? 'open' : ''}`}>
-          <ul className='navitens'>
-            <li>
-              <Link to="/" onClick={closeMenu}>Home</Link>
-            </li>
-            <li>
-              <Link to="/about" onClick={closeMenu}>Sobre</Link>
-            </li>
-            <li>
-              <a href="#services" onClick={closeMenu}>Serviços</a>
-            </li>
-            <li>
-              <Link to="/contact" onClick={closeMenu}>Contato</Link>
-            </li>
-          </ul>
-        </nav>
-      </header>
-      
-    </div>
+    <header className="header">
+      <Link to="/" className="logo">
+        <img src={logo} alt="Logo" className="logo-image" />
+      </Link>
+      <button className="menu-icon" onClick={toggleMenu}>
+        {isMenuOpen ? <FaTimes /> : <FaBars />}
+      </button>
+      <nav className={`navbar ${isMenuOpen ? 'open' : ''}`}>
+        <ul className="nav-items">
+          <li>
+            <Link to="/" onClick={closeMenu}>Home</Link>
+          </li>
+          <li>
+            <Link to="/about" onClick={closeMenu}>Sobre</Link>
+          </li>
+          <li>
+            <a href="#services" onClick={closeMenu}>Serviços</a>
+          </li>
+          <li>
+            <Link to="/contact" onClick={closeMenu}>Contato</Link>
+          </li>
+        </ul>
+      </nav>
+    </header>
   );
 };
 

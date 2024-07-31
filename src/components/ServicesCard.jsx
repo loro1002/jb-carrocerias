@@ -1,7 +1,6 @@
-// src/components/ServiceCard.jsx
 import React from 'react';
 import { FaTools, FaPaintRoller, FaCaravan, FaHome, FaWrench, FaBoxOpen } from 'react-icons/fa';
-import './ServicesCard.css';
+import './ServicesCard.css'; // Certifique-se de que o nome do arquivo CSS está correto
 
 const services = [
   {
@@ -49,7 +48,7 @@ const services = [
 const ServiceCard = () => {
   return (
     <div>
-        <h2 className='services-title'>Serviços</h2>
+      <h2 className='services-title'>Serviços</h2>
       <section id='services' className="service-cards">
         {services.map((service, index) => (
           <div className="service-card" key={index}>
