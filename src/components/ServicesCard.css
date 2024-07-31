@@ -1,0 +1,77 @@
+/* src/components/ServiceCard.css */
+.service-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    
+  }
+  .services-title{
+    margin-left: 20px;
+    border-bottom: 2px green solid;
+    padding-top: 60px;
+  }
+  
+  .service-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px); /* Inicialmente movido para baixo */
+    animation: fadeInUp 1s forwards; /* Aplica a animação */
+  }
+  
+  /* Efeito de scroll reveal */
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .icon {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+    margin: 10px 0;
+  }
+  
+  p {
+    font-size: 0.875rem;
+    color: #555;
+  }
+  
+  /* Adicionar uma animação de fade-in baseada em posição */
+  @media (prefers-reduced-motion: no-preference) {
+    .service-card:nth-child(1) {
+      animation: fadeInUp 1s 0.1s forwards;
+    }
+    .service-card:nth-child(2) {
+      animation: fadeInUp 1s 0.2s forwards;
+    }
+    .service-card:nth-child(3) {
+      animation: fadeInUp 1s 0.3s forwards;
+    }
+    .service-card:nth-child(4) {
+      animation: fadeInUp 1s 0.4s forwards;
+    }
+    .service-card:nth-child(5) {
+      animation: fadeInUp 1s 0.5s forwards;
+    }
+  }
+  

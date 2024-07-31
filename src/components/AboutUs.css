@@ -1,0 +1,100 @@
+/* src/components/AboutUs.css */
+.about-us {
+    padding: 60px 20px;
+    background-color: #f4f4f4;
+    padding-top: 220px;
+  }
+  
+  .about-us-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .about-us-image-container {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .about-us-image {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .about-us-image:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+  
+  .about-us-text {
+    flex: 1;
+    max-width: 600px;
+    animation: fadeIn 2s ease-in;
+  }
+  
+  .about-us-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 15px;
+    color: #333;
+    border-bottom: 3px solid green;
+    transition: border-bottom-color 0.3s ease;
+  }
+  
+  .about-us-text h2::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: green;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+  }
+  
+  .about-us-text h2:hover::before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+  
+  .about-us-text p {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .about-us-container {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .about-us-image-container {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  
+    .about-us-text {
+      width: 100%;
+    }
+  }
+  
