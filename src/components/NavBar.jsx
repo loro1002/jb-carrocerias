@@ -57,14 +57,7 @@ const NavBar = () => {
           </ul>
         </nav>
       </header>
-      <section className='hero-section'>
-        <div>
-          <img src={logo} alt="" />
-          <h2>Fone: 44 3639 4499</h2>
-          <p>Rua Santo André, 3320 - Jd São Cristovão</p>
-          <p>umuarama - Pr</p>
-        </div>
-      </section>
+      
     </div>
   );
 };

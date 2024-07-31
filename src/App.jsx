@@ -21,6 +21,8 @@ import galeria9 from './assets/galeria-9.jpg'
 import Footer from './components/Footer';
 import FloatingButtons from './components/FloatingButtons';
 import Map from './components/Map';
+import Homologations from './components/Homologations';
+import Header from './components/Header';
 
 const images = [galeria1, galeria2, galeria3, galeria4, galeria5, galeria6, galeria7, galeria8, galeria9, image1];
 
@@ -28,9 +30,11 @@ const App = () => {
   return (
     <Router>
       <NavBar />
+      <Header />
       <AboutUs />
       <ServiceCard />
       <Gallery images={images} />
+      <Homologations />
       <FloatingButtons />
       <Map />
       <Footer />

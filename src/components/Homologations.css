@@ -1,0 +1,52 @@
+.homologations-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-top: 4rem;
+    background-color: #206d08f1; /* Ajuste conforme necessário */
+  }
+  
+  .homologations-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, #f5a623, #ffd700);
+    color: #000;
+    font-size: 1.5em;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .homologations-logos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .homologations-logos img {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .homologations-logos img:hover {
+    transform: scale(1.1);
+  }
+  
+  @media (max-width: 768px) {
+    .homologations-logos img {
+      width: 80px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .homologations-logos img {
+      width: 60px;
+    }
+  }
+  
