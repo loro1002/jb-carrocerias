@@ -1,5 +1,5 @@
 // src/components/AboutUs.jsx
-import React from 'react';
+
 import './AboutUs.css';
 import aboutUsImage from '../assets/quen-somos.jpeg';
 

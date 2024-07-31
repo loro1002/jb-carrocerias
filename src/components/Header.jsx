@@ -1,5 +1,5 @@
 // src/components/Header.jsx
-import React from 'react';
+
 import './Header.css';
 import truckImage from '../assets/galeria-1.jpg'; // Verifique se o caminho está correto
 import { Link } from 'react-router-dom';
