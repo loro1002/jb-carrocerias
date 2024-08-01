@@ -8,8 +8,8 @@ const Footer = () => {
       <div className="footer-content">
         <div className="footer-info">
           <h2>Contato</h2>
-          <p>Endereço: Rua Exemplo, 123 - Cidade, Estado, País</p>
-          <p><FaPhoneAlt /> +55 12 3456-7890</p>
+          <p>Endereço: R. São André, 3320 - Jardim Sao Cristovao, Umuarama - PR, 87507-230</p>
+          <p><FaPhoneAlt /> +55 44 3639-4499</p>
           <p><FaEnvelope /> contato@exemplo.com</p>
         </div>
         <div className="footer-social">
