@@ -78,6 +78,108 @@
   margin-bottom: 20px;
 }
 
+/* CSS for AboutUs component */
+
+/* Keyframes for fadeIn animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* General styling for the container */
+.content-about {
+  display: flex;
+  width: 100%;
+  height: 550px;
+  flex-wrap: nowrap;
+  justify-content: space-around; /* Adds space between the items */
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Common styling for each section */
+.content-missao, .content-visao, .content-valor {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  flex: 1;
+ 
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative; /* For positioning the icon */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Individual background colors */
+.content-visao {
+  background-color: #666;
+}
+
+.content-valor {
+  background-color: #54ad0b;
+}
+
+/* Hover effects for each section */
+.content-missao:hover, .content-visao:hover, .content-valor:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Heading styling */
+.content-missao h1, .content-visao h1, .content-valor h1 {
+  padding-bottom: 20px;
+  font-size: 2.2rem;
+}
+
+/* Paragraph styling */
+.content-missao p, .content-visao p, .content-valor p {
+  font-size: 1.14rem;
+  color: white;
+}
+
+/* Icon styling */
+.content-missao::after, .content-visao::after, .content-valor::after {
+  content: "\f013"; /* Unicode for a sample icon, replace with appropriate icon */
+  font-family: "Font Awesome 5 Free"; /* Replace with the icon font you are using */
+  font-weight: 900;
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 0.1); /* Transparent gray color */
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .content-about {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .content-missao, .content-visao, .content-valor {
+    margin: 10px 0;
+  }
+}
+
+/* Before and after pseudo-elements for added styling */
+.content-missao::before, .content-visao::before, .content-valor::before {
+  content: "";
+  display: block;
+  height: 5px;
+  width: 0;
+  background: white;
+  transition: width 0.3s ease;
+}
+
+.content-missao:hover::before, .content-visao:hover::before, .content-valor:hover::before {
+  width: 100%;
+}
+
 /* Animações */
 @keyframes fadeIn {
   from {
