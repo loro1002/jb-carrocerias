@@ -42,10 +42,10 @@ const NavBar = () => {
       <nav className={`navbar ${isMenuOpen ? 'open' : ''}`}>
         <ul className="nav-items">
           <li>
-            <Link to="/" onClick={closeMenu}>Home</Link>
+            <a href="#home" onClick={closeMenu}>Home</a>
           </li>
           <li>
-            <Link to="/about" onClick={closeMenu}>Sobre</Link>
+            <a href="#about-us" onClick={closeMenu}>Sobre</a>
           </li>
           <li>
             <a href="#services" onClick={closeMenu}>Serviços</a>

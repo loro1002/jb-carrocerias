@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <header id='header' className="header-container">
+    <header id='home' className="header-container">
       <div className="header-content">
         <h1>Produzimos carrocerias para caminhões com a máxima excelência e qualidade.</h1>
         <p>Nossa principal meta é fabricar produtos de alta qualidade e resistência, voltados para o futuro do transporte global de cargas.</p>
