@@ -1,24 +1,26 @@
+// src/components/Homologations.jsx
+
 import React from 'react';
 import './Homologations.css';
-import inmetroLogo from '../assets/inmetro-logo.png'; // Substitua pelos caminhos reais das imagens
+import inmetroLogo from '../assets/inmetro-logo.png'; 
 import detranLogo from '../assets/detran-sp.png';
 import anfirLogo from '../assets/janfir-logo.png';
 import ibamaLogo from '../assets/ibama-logo.png';
 
 const Homologations = () => {
   return (
-    <div className="homologations-container">
-      <div className="homologations-title">
+    <section className="homologations-container">
+      <h2 className="homologations-title">
         <span>SOMOS</span>
         <span>HOMOLOGADOS</span>
-      </div>
+      </h2>
       <div className="homologations-logos">
-        <img src={inmetroLogo} alt="Inmetro Logo" />
-        <img src={detranLogo} alt="Detran SP Logo" />
-        <img src={anfirLogo} alt="Anfir Logo" />
-        <img src={ibamaLogo} alt="Ibama Logo" />
+        <img src={inmetroLogo} alt="Logotipo do Inmetro, Instituto Nacional de Metrologia, Qualidade e Tecnologia" />
+        <img src={detranLogo} alt="Logotipo do Detran SP, Departamento de Trânsito de São Paulo" />
+        <img src={anfirLogo} alt="Logotipo da Anfir, Associação Nacional dos Fabricantes de Implementos Rodoviários" />
+        <img src={ibamaLogo} alt="Logotipo do Ibama, Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis" />
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -33,13 +33,18 @@ const NavBar = () => {
 
   return (
     <header className="header">
-      <Link to="/" className="logo">
-        <img src={logo} alt="Logo" className="logo-image" />
+      <Link to="/" className="logo" aria-label="Página Inicial">
+        <img src={logo} alt="Logo da Empresa" className="logo-image" />
       </Link>
-      <button className="menu-icon" onClick={toggleMenu}>
+      <button 
+        className="menu-icon" 
+        onClick={toggleMenu} 
+        aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"} 
+        aria-controls="navbar"
+      >
         {isMenuOpen ? <FaTimes /> : <FaBars />}
       </button>
-      <nav className={`navbar ${isMenuOpen ? 'open' : ''}`}>
+      <nav className={`navbar ${isMenuOpen ? 'open' : ''}`} id="navbar">
         <ul className="nav-items">
           <li>
             <a href="#home" onClick={closeMenu}>Home</a>

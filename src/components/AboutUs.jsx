@@ -5,11 +5,16 @@ import aboutUsImage from '../assets/quen-somos.jpeg';
 
 const AboutUs = () => {
   return (
-    <div>
+    <main>
       <section id="about-us" className="about-us">
         <div className="about-us-container">
           <figure className="about-us-image-container">
-            <img src={aboutUsImage} alt="Sobre Nós" className="about-us-image" />
+            <img 
+              src={aboutUsImage} 
+              alt="Equipe da empresa durante um projeto de revitalização de carrocerias" 
+              className="about-us-image" 
+              loading="lazy"
+            />
           </figure>
           <div className="about-us-text">
             <h2>Sobre Nós</h2>
@@ -25,28 +30,30 @@ const AboutUs = () => {
           </div>
         </div>
       </section>
+
       <section className='content-about'>
         <article className='content-missao'>
-          <h1>Nossa Missão</h1>
-          <p>Nossa missão é entregar soluções inovadoras e confiáveis no setor de implementos rodoviários, sempre visando superar as expectativas dos nossos clientes. Nosso objetivo é impulsionar o crescimento e a eficiência do setor de transporte, fornecendo tecnologia avançada, qualidade superior e excelência no atendimento.</p>
+          <h2>Nossa Missão</h2>
+          <p>
+            Nossa missão é entregar soluções inovadoras e confiáveis no setor de implementos rodoviários, sempre visando superar as expectativas dos nossos clientes. Nosso objetivo é impulsionar o crescimento e a eficiência do setor de transporte, fornecendo tecnologia avançada, qualidade superior e excelência no atendimento.
+          </p>
         </article>
-        <article className='content-visao'>
-          <h1>Nossa Visão</h1>
-          <p>Ser reconhecida como líder de mercado no segmento de implementos rodoviários, oferecendo produtos de alto desempenho e soluções personalizadas que atendam às necessidades dos nossos clientes. Buscamos constantemente a inovação, a sustentabilidade e a busca por melhores práticas em todos os aspectos do nosso negócio.</p>
-        </article>
-        <article className='content-valor'>
-  <h1>Nossos Valores</h1>
-  <p>
-    Buscamos a excelência em nossos produtos e serviços, garantindo qualidade, durabilidade, e eficiência. 
-    Estamos sempre inovando com novas tecnologias e processos para agregar valor aos nossos clientes. 
-    Nosso comprometimento é total, com foco em cumprir prazos e garantir a satisfação do cliente. 
-    Valorizamos a sustentabilidade, adotando práticas ecológicas em nossa produção. 
-    Operamos de forma ética e transparente, respeitando clientes, colaboradores, fornecedores e a sociedade.
-  </p>
-</article>
 
+        <article className='content-visao'>
+          <h2>Nossa Visão</h2>
+          <p>
+            Ser reconhecida como líder de mercado no segmento de implementos rodoviários, oferecendo produtos de alto desempenho e soluções personalizadas que atendam às necessidades dos nossos clientes. Buscamos constantemente a inovação, a sustentabilidade e a busca por melhores práticas em todos os aspectos do nosso negócio.
+          </p>
+        </article>
+
+        <article className='content-valor'>
+          <h2>Nossos Valores</h2>
+          <p>
+            Buscamos a excelência em nossos produtos e serviços, garantindo qualidade, durabilidade e eficiência. Estamos sempre inovando com novas tecnologias e processos para agregar valor aos nossos clientes. Nosso comprometimento é total, com foco em cumprir prazos e garantir a satisfação do cliente. Valorizamos a sustentabilidade, adotando práticas ecológicas em nossa produção. Operamos de forma ética e transparente, respeitando clientes, colaboradores, fornecedores e a sociedade.
+          </p>
+        </article>
       </section>
-    </div>
+    </main>
   );
 };
 
