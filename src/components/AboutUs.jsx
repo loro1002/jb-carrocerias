@@ -35,14 +35,16 @@ const AboutUs = () => {
           <p>Ser reconhecida como líder de mercado no segmento de implementos rodoviários, oferecendo produtos de alto desempenho e soluções personalizadas que atendam às necessidades dos nossos clientes. Buscamos constantemente a inovação, a sustentabilidade e a busca por melhores práticas em todos os aspectos do nosso negócio.</p>
         </article>
         <article className='content-valor'>
-          <h1>Nossos Valores</h1>
-          <p>1. Qualidade: Buscamos a excelência em todos os nossos produtos e serviços, garantindo durabilidade, confiabilidade e eficiência.
-2. Inovação: Estamos sempre em busca de soluções inovadoras que agreguem valor aos nossos clientes, seja por meio de novas tecnologias, materiais ou processos.
-3. Comprometimento: Nosso compromisso é pautado pela responsabilidade e dedicação em cumprir prazos, atender às necessidades dos nossos clientes e garantir a satisfação total.
-4. Sustentabilidade: Valorizamos a preservação do meio ambiente, buscando constantemente alternativas ecológicas em nossos processos produtivos, materiais utilizados e no desenvolvimento de novos produtos.
-5. Ética: Conduzimos nossos negócios de forma ética e transparente, respeitando todas as partes envolvidas, incluindo clientes, colaboradores, fornecedores e a sociedade como um todo.
-</p>
-        </article>
+  <h1>Nossos Valores</h1>
+  <p>
+    Buscamos a excelência em nossos produtos e serviços, garantindo qualidade, durabilidade, e eficiência. 
+    Estamos sempre inovando com novas tecnologias e processos para agregar valor aos nossos clientes. 
+    Nosso comprometimento é total, com foco em cumprir prazos e garantir a satisfação do cliente. 
+    Valorizamos a sustentabilidade, adotando práticas ecológicas em nossa produção. 
+    Operamos de forma ética e transparente, respeitando clientes, colaboradores, fornecedores e a sociedade.
+  </p>
+</article>
+
       </section>
     </div>
   );

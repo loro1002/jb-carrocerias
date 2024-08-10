@@ -40,8 +40,9 @@ const services = [
   },
   {
     icon: <FaCaravan />,
-    title: "Reparo e manutenção de sistemas de freios",
-    description: "Reparo e manutenção de sistemas de freios para garantir a segurança e eficiência de sua carreta."
+title: "Carrocerias Usadas em Ótimo Estado para Venda",
+description: "Oferecemos carrocerias usadas em excelente estado de conservação, prontas para uso. Todas as carrocerias passam por uma rigorosa inspeção e manutenção, garantindo durabilidade, segurança e eficiência para sua carreta."
+
   }
 ];
 

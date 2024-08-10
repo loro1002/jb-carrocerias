@@ -25,15 +25,19 @@ const Header = () => {
         >
           Nossa principal meta é fabricar produtos de alta qualidade e resistência, voltados para o futuro do transporte global de cargas.
         </motion.p>
-        <Link to="/about-us">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-          >
-            CONHEÇA NOSSA HISTÓRIA
-          </motion.button>
-        </Link>
+        <a
+  href="https://wa.me/5544999177845?text=Eu%20venho%20do%20site%20gostaria%20de%20um%20or%C3%A7amento"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <motion.button
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+    transition={{ duration: 0.2 }}
+  >
+    Faça um orçamento!
+  </motion.button>
+</a>
         <div className="social-icons">
           <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
           <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
