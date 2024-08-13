@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import './NavBar.css';
-import logo from '../assets/logo.png'; // Verifique se o caminho está correto
+import logo from '../assets/logo.png';
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,18 +33,13 @@ const NavBar = () => {
 
   return (
     <header className="header">
-      <Link to="/" className="logo" aria-label="Página Inicial">
-        <img src={logo} alt="Logo da Empresa" className="logo-image" />
+      <Link to="/" className="logo" aria-label="Ir para a página inicial">
+        <img src={logo} alt="Logo" className="logo-image" />
       </Link>
-      <button 
-        className="menu-icon" 
-        onClick={toggleMenu} 
-        aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"} 
-        aria-controls="navbar"
-      >
+      <button className="menu-icon" onClick={toggleMenu} aria-label="Abrir menu">
         {isMenuOpen ? <FaTimes /> : <FaBars />}
       </button>
-      <nav className={`navbar ${isMenuOpen ? 'open' : ''}`} id="navbar">
+      <nav className={`navbar ${isMenuOpen ? 'open' : ''}`} aria-hidden={!isMenuOpen}>
         <ul className="nav-items">
           <li>
             <a href="#home" onClick={closeMenu}>Home</a>

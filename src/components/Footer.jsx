@@ -10,7 +10,7 @@ const Footer = () => {
           <h2>Contato</h2>
           <p>Endereço: R. São André, 3320 - Jardim Sao Cristovao, Umuarama - PR, 87507-230</p>
           <p><FaPhoneAlt /> +55 44 3639-4499</p>
-          <p><FaEnvelope /> contato@exemplo.com</p>
+          <p><FaEnvelope /> contato@carroceriasjb.com.br</p>
         </div>
         <div className="footer-social">
           <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
