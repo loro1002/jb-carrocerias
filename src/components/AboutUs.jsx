@@ -1,60 +1,109 @@
-// src/components/AboutUs.jsx
-
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { FiTarget, FiEye, FiHeart } from 'react-icons/fi';
 import './AboutUs.css';
-import aboutUsImage from '../assets/quen-somos.jpeg';
+import aboutImage from '../assets/quen-somos.jpeg';
 
-const AboutUs = () => {
-  return (
-    <main>
-      <section id="about-us" className="about-us">
-        <div className="about-us-container">
-          <figure className="about-us-image-container">
-            <img 
-              src={aboutUsImage} 
-              alt="Equipe da empresa durante um projeto de revitalização de carrocerias" 
-              className="about-us-image" 
-              loading="lazy"
-            />
-          </figure>
-          <div className="about-us-text">
-            <h2>Sobre Nós</h2>
-            <p>
-              Na nossa empresa, somos especialistas em reforma e revitalização de carrocerias, oferecendo um conjunto completo de serviços de alta qualidade. Com mais de 20 anos de experiência no setor, nos destacamos pela nossa dedicação e compromisso com a excelência.
-            </p>
-            <p>
-              Trabalhamos com um foco inabalável na satisfação do cliente, aplicando técnicas avançadas e utilizando materiais de primeira linha. Nossos serviços incluem a reforma e revitalização de carrocerias de madeira, a restauração de assoalhos e a montagem personalizada de gavetas e cozinhas para carreta ou carroceria. Além disso, somos especialistas em pintura profissional para carretas e carrocerias de madeira, garantindo um acabamento impecável e duradouro.
-            </p>
-            <p>
-              Nosso compromisso com a qualidade e a inovação nos permite oferecer soluções que atendem e superam as expectativas dos nossos clientes. Estamos sempre atualizados com as últimas tendências e técnicas para garantir que nossos serviços não apenas atendam, mas excedam os padrões da indústria.
-            </p>
-          </div>
-        </div>
-      </section>
+const VALUES = [
+  {
+    icon: FiTarget,
+    title: 'Nossa Missão',
+    text: 'Entregar soluções inovadoras e confiáveis no setor de implementos rodoviários, superando as expectativas dos clientes e impulsionando a eficiência do transporte.',
+  },
+  {
+    icon: FiEye,
+    title: 'Nossa Visão',
+    text: 'Ser reconhecida como líder de mercado em implementos rodoviários, com produtos de alto desempenho e soluções personalizadas que antecipam as necessidades do setor.',
+  },
+  {
+    icon: FiHeart,
+    title: 'Nossos Valores',
+    text: 'Excelência, inovação, comprometimento e sustentabilidade. Operamos com total transparência, respeitando clientes, colaboradores, fornecedores e a sociedade.',
+  },
+];
 
-      <section className='content-about'>
-        <article className='content-missao'>
-          <h2>Nossa Missão</h2>
-          <p>
-            Nossa missão é entregar soluções inovadoras e confiáveis no setor de implementos rodoviários, sempre visando superar as expectativas dos nossos clientes. Nosso objetivo é impulsionar o crescimento e a eficiência do setor de transporte, fornecendo tecnologia avançada, qualidade superior e excelência no atendimento.
-          </p>
-        </article>
-
-        <article className='content-visao'>
-          <h2>Nossa Visão</h2>
-          <p>
-            Ser reconhecida como líder de mercado no segmento de implementos rodoviários, oferecendo produtos de alto desempenho e soluções personalizadas que atendam às necessidades dos nossos clientes. Buscamos constantemente a inovação, a sustentabilidade e a busca por melhores práticas em todos os aspectos do nosso negócio.
-          </p>
-        </article>
-
-        <article className='content-valor'>
-          <h2>Nossos Valores</h2>
-          <p>
-            Buscamos a excelência em nossos produtos e serviços, garantindo qualidade, durabilidade e eficiência. Estamos sempre inovando com novas tecnologias e processos para agregar valor aos nossos clientes. Nosso comprometimento é total, com foco em cumprir prazos e garantir a satisfação do cliente. Valorizamos a sustentabilidade, adotando práticas ecológicas em nossa produção. Operamos de forma ética e transparente, respeitando clientes, colaboradores, fornecedores e a sociedade.
-          </p>
-        </article>
-      </section>
-    </main>
-  );
+const fadeUp = {
+  hidden: { opacity: 0, y: 36 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.4, 0, 0.2, 1] } },
 };
 
-export default AboutUs;
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.13 } },
+};
+
+export function AboutUs() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-80px' });
+
+  return (
+    <section id="about-us" className="about">
+      <div className="about__inner" ref={ref}>
+        <motion.div
+          className="about__media"
+          initial={{ opacity: 0, x: -40 }}
+          animate={inView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+        >
+          <div className="about__image-wrap">
+            <img
+              src={aboutImage}
+              alt="Equipe JB Carrocerias em ação"
+              loading="lazy"
+            />
+          </div>
+          <div className="about__badge">
+            <span className="about__badge-value">20+</span>
+            <span className="about__badge-label">anos no mercado</span>
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="about__copy"
+          variants={stagger}
+          initial="hidden"
+          animate={inView ? 'visible' : 'hidden'}
+        >
+          <motion.span className="section-tag" variants={fadeUp}>
+            Quem Somos
+          </motion.span>
+
+          <motion.h2 className="section-heading about__heading" variants={fadeUp}>
+            Especialistas em<br />carrocerias de madeira
+          </motion.h2>
+
+          <motion.p className="about__text" variants={fadeUp}>
+            Na JB Carrocerias, somos especialistas em reforma, revitalização e
+            fabricação de carrocerias. Com mais de 20 anos de experiência no
+            setor, nos destacamos pela dedicação e compromisso com a excelência.
+          </motion.p>
+
+          <motion.p className="about__text" variants={fadeUp}>
+            Aplicamos técnicas avançadas com materiais de primeira linha. Nossos
+            serviços abrangem reforma de carrocerias, restauração de assoalhos,
+            montagem de gavetas e cozinhas personalizadas, pintura profissional e
+            fabricação de carrocerias novas.
+          </motion.p>
+        </motion.div>
+      </div>
+
+      <motion.div
+        className="about__values"
+        variants={stagger}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-60px' }}
+      >
+        {VALUES.map(({ icon: Icon, title, text }) => (
+          <motion.article key={title} className="about__value-card" variants={fadeUp}>
+            <div className="about__value-icon">
+              <Icon />
+            </div>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </motion.article>
+        ))}
+      </motion.div>
+    </section>
+  );
+}

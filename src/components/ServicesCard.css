@@ -1,103 +1,112 @@
-/* Container dos cards de serviço */
-.service-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  padding: 20px;
+.services {
+  padding: 96px 48px;
+  background: var(--bg);
 }
 
-/* Título da seção de serviços */
-.services-title {
-  margin-left: 20px;
-  border-bottom: 2px solid green;
-  padding-top: 60px;
-  text-align: center; /* Centraliza o título */
-  font-size: 2rem; /* Ajuste o tamanho conforme necessário */
+.services__header {
+  max-width: var(--max-width);
+  margin: 0 auto 48px;
 }
 
-/* Card de serviço */
-.service-card {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 20px;
-  width: calc(25% - 40px); /* Max 4 cards por linha, ajustando o gap */
-  text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.services__title {
+  margin-top: 10px;
+}
+
+.services__grid {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.services__card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color var(--transition), transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.services__card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), transparent);
   opacity: 0;
-  transform: translateY(20px); /* Inicialmente movido para baixo */
-  animation: fadeInUp 1s forwards; /* Aplica a animação */
+  transition: opacity var(--transition);
 }
 
-/* Animação de scroll reveal */
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.services__card:hover {
+  border-color: var(--border-accent);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-accent);
 }
 
-/* Efeito de hover nos cards */
-.service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+.services__card:hover::after {
+  opacity: 1;
 }
 
-/* Ícone do card */
-.icon {
-  font-size: 2rem;
-  color: #333;
+.services__card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-dim);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  margin-bottom: 20px;
+  transition: background var(--transition);
+}
+
+.services__card:hover .services__card-icon {
+  background: rgba(34, 197, 94, 0.22);
+}
+
+.services__card h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text);
   margin-bottom: 10px;
+  line-height: 1.2;
 }
 
-/* Título do serviço */
-h3 {
-  font-size: 1.25rem;
-  margin: 10px 0;
-}
-
-/* Descrição do serviço */
-p {
+.services__card p {
   font-size: 0.875rem;
-  color: #555;
+  color: var(--text-muted);
+  line-height: 1.68;
 }
 
-/* Adicionar uma animação de fade-in baseada em posição */
-@media (prefers-reduced-motion: no-preference) {
-  .service-card:nth-child(1) {
-    animation: fadeInUp 1s 0.1s forwards;
-  }
-  .service-card:nth-child(2) {
-    animation: fadeInUp 1s 0.2s forwards;
-  }
-  .service-card:nth-child(3) {
-    animation: fadeInUp 1s 0.3s forwards;
-  }
-  .service-card:nth-child(4) {
-    animation: fadeInUp 1s 0.4s forwards;
-  }
-  .service-card:nth-child(5) {
-    animation: fadeInUp 1s 0.5s forwards;
-  }
-}
-
-/* Responsividade para telas menores */
-@media (max-width: 1200px) {
-  .service-card {
-    width: calc(33.33% - 40px); /* 3 cards por linha em telas médias */
+@media (max-width: 1100px) {
+  .services__grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .service-card {
-    width: calc(50% - 40px); /* 2 cards por linha em telas menores */
+  .services {
+    padding: 72px 24px;
+  }
+
+  .services__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
 }
 
 @media (max-width: 480px) {
-  .service-card {
-    width: 100%; /* 1 card por linha em telas muito pequenas */
+  .services__grid {
+    grid-template-columns: 1fr;
   }
 }

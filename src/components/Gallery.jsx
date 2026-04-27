@@ -1,61 +1,155 @@
-// src/components/Gallery.jsx
-import React from 'react';
+import { useState, useCallback, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FiX, FiChevronDown, FiChevronUp, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import './Gallery.css';
 
-const Gallery = ({ images }) => {
-  const [showMore, setShowMore] = React.useState(false);
-  const [selectedImage, setSelectedImage] = React.useState(null);
+const INITIAL_VISIBLE = 6;
 
-  // Função para alternar a exibição de mais imagens
-  const handleShowMore = () => {
-    setShowMore(!showMore);
-  };
+export function Gallery({ images }) {
+  const [showAll, setShowAll] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(null);
 
-  // Função para abrir o modal com a imagem selecionada
-  const handleOpenModal = (image) => {
-    setSelectedImage(image);
-  };
+  const visibleImages = showAll ? images : images.slice(0, INITIAL_VISIBLE);
 
-  // Função para fechar o modal
-  const handleCloseModal = () => {
-    setSelectedImage(null);
-  };
+  const openLightbox = useCallback((index) => setLightboxIndex(index), []);
+  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
 
-  // Limitar o número de imagens exibidas
-  const displayedImages = showMore ? images : images.slice(0, 6);
+  const goToPrev = useCallback(
+    () => setLightboxIndex((i) => (i - 1 + images.length) % images.length),
+    [images.length]
+  );
+
+  const goToNext = useCallback(
+    () => setLightboxIndex((i) => (i + 1) % images.length),
+    [images.length]
+  );
+
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+
+    const handleKey = (e) => {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') goToPrev();
+      if (e.key === 'ArrowRight') goToNext();
+    };
+
+    document.addEventListener('keydown', handleKey);
+    return () => document.removeEventListener('keydown', handleKey);
+  }, [lightboxIndex, closeLightbox, goToPrev, goToNext]);
 
   return (
-    <div className="gallery-container">
-      <h2 className="gallery-title">Galeria</h2>
-      <div className="gallery-grid">
-        {displayedImages.map((image, index) => (
-          <div key={index} className="gallery-item" onClick={() => handleOpenModal(image)}>
-            <img src={image} alt={`Gallery ${index}`} className="gallery-image" />
-          </div>
-        ))}
+    <section id="gallery" className="gallery">
+      <div className="gallery__header">
+        <span className="section-tag">Nosso trabalho</span>
+        <h2 className="section-heading gallery__title">Galeria</h2>
       </div>
-      {!showMore && images.length > 6 && (
-        <button className="show-more-button" onClick={handleShowMore}>
-          &#9660; Mostrar Mais
-        </button>
-      )}
-      {showMore && (
-        <button className="show-more-button" onClick={handleShowMore}>
-          &#9650; Mostrar Menos
+
+      <div className="gallery__grid">
+        {visibleImages.map((src) => {
+          const globalIndex = images.indexOf(src);
+          return (
+            <motion.div
+              key={src}
+              className="gallery__item"
+              initial={{ opacity: 0, scale: 0.96 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.4,
+                delay: (globalIndex % INITIAL_VISIBLE) * 0.06,
+              }}
+              onClick={() => openLightbox(globalIndex)}
+              role="button"
+              tabIndex={0}
+              aria-label={`Abrir foto ${globalIndex + 1}`}
+              onKeyDown={(e) => e.key === 'Enter' && openLightbox(globalIndex)}
+            >
+              <img
+                src={src}
+                alt={`Trabalho JB Carrocerias ${globalIndex + 1}`}
+                loading="lazy"
+              />
+              <div className="gallery__overlay">
+                <span>Ver foto</span>
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+
+      {images.length > INITIAL_VISIBLE && (
+        <button
+          className="gallery__toggle"
+          onClick={() => setShowAll((v) => !v)}
+        >
+          {showAll ? (
+            <>
+              <FiChevronUp /> Mostrar menos
+            </>
+          ) : (
+            <>
+              <FiChevronDown /> Ver mais fotos
+            </>
+          )}
         </button>
       )}
 
-      {/* Modal */}
-      {selectedImage && (
-        <div className="modal" onClick={handleCloseModal}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <img src={selectedImage} alt="Modal" className="modal-image" />
-            <button className="modal-close" onClick={handleCloseModal}>&#10005;</button>
-          </div>
-        </div>
-      )}
-    </div>
+      <AnimatePresence>
+        {lightboxIndex !== null && (
+          <motion.div
+            className="lightbox"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeLightbox}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Visualizador de fotos"
+          >
+            <motion.div
+              className="lightbox__content"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.22 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={images[lightboxIndex]}
+                alt={`Foto ${lightboxIndex + 1} de ${images.length}`}
+              />
+
+              <button
+                className="lightbox__nav lightbox__nav--prev"
+                onClick={goToPrev}
+                aria-label="Foto anterior"
+              >
+                <FiChevronLeft />
+              </button>
+
+              <button
+                className="lightbox__nav lightbox__nav--next"
+                onClick={goToNext}
+                aria-label="Próxima foto"
+              >
+                <FiChevronRight />
+              </button>
+
+              <button
+                className="lightbox__close"
+                onClick={closeLightbox}
+                aria-label="Fechar"
+              >
+                <FiX />
+              </button>
+
+              <span className="lightbox__counter">
+                {lightboxIndex + 1} / {images.length}
+              </span>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
   );
-};
-
-export default Gallery;
+}

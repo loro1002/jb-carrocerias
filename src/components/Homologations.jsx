@@ -1,27 +1,59 @@
-// src/components/Homologations.jsx
-
-import React from 'react';
+import { motion } from 'framer-motion';
 import './Homologations.css';
-import inmetroLogo from '../assets/inmetro-logo.png'; 
+import inmetroLogo from '../assets/inmetro-logo.png';
 import detranLogo from '../assets/detran-sp.png';
 import anfirLogo from '../assets/janfir-logo.png';
 import ibamaLogo from '../assets/ibama-logo.png';
 
-const Homologations = () => {
+const LOGOS = [
+  {
+    src: inmetroLogo,
+    alt: 'INMETRO — Instituto Nacional de Metrologia, Qualidade e Tecnologia',
+  },
+  {
+    src: detranLogo,
+    alt: 'DETRAN SP — Departamento de Trânsito de São Paulo',
+  },
+  {
+    src: anfirLogo,
+    alt: 'ANFIR — Associação Nacional dos Fabricantes de Implementos Rodoviários',
+  },
+  {
+    src: ibamaLogo,
+    alt: 'IBAMA — Instituto Brasileiro do Meio Ambiente',
+  },
+];
+
+export function Homologations() {
   return (
-    <section className="homologations-container">
-      <h2 className="homologations-title">
-        <span>SOMOS</span>
-        <span>HOMOLOGADOS</span>
-      </h2>
-      <div className="homologations-logos">
-        <img src={inmetroLogo} alt="Logotipo do Inmetro, Instituto Nacional de Metrologia, Qualidade e Tecnologia" />
-        <img src={detranLogo} alt="Logotipo do Detran SP, Departamento de Trânsito de São Paulo" />
-        <img src={anfirLogo} alt="Logotipo da Anfir, Associação Nacional dos Fabricantes de Implementos Rodoviários" />
-        <img src={ibamaLogo} alt="Logotipo do Ibama, Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis" />
+    <section className="homolog">
+      <div className="homolog__inner">
+        <div className="homolog__text">
+          <span className="section-tag">Certificações</span>
+          <h2 className="section-heading homolog__heading">
+            Somos Homologados
+          </h2>
+          <p>
+            Trabalhamos em conformidade com os principais órgãos reguladores do
+            setor de transportes, garantindo segurança e legalidade para você.
+          </p>
+        </div>
+
+        <div className="homolog__logos">
+          {LOGOS.map(({ src, alt }, i) => (
+            <motion.div
+              key={alt}
+              className="homolog__logo"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+            >
+              <img src={src} alt={alt} loading="lazy" />
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
-};
-
-export default Homologations;
+}
